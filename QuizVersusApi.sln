@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizVersusApi", "QuizVersusApi\QuizVersusApi.csproj", "{F266894B-8AD7-4327-9582-2F1D2E009CC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizVersus.Core", "QuizVersus.Core\QuizVersus.Core.csproj", "{5E127393-9E79-48B8-B19F-993F1E5CB290}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F266894B-8AD7-4327-9582-2F1D2E009CC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F266894B-8AD7-4327-9582-2F1D2E009CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F266894B-8AD7-4327-9582-2F1D2E009CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F266894B-8AD7-4327-9582-2F1D2E009CC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E127393-9E79-48B8-B19F-993F1E5CB290}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E127393-9E79-48B8-B19F-993F1E5CB290}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E127393-9E79-48B8-B19F-993F1E5CB290}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E127393-9E79-48B8-B19F-993F1E5CB290}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C779792A-53CE-4003-B0CD-22633A42598C}
+	EndGlobalSection
+EndGlobal
