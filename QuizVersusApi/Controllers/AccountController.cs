@@ -1,12 +1,13 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web.Http;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using QuizVersus.Core.Data.Entities;
 using QuizVersusApi.Models;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web.Http;
+using QuizVersus.Core.Data.Consts;
 
 namespace QuizVersusApi.Controllers
 {
@@ -16,14 +17,11 @@ namespace QuizVersusApi.Controllers
     {
         private ApplicationUserManager _userManager;
 
-        public AccountController()
-        {
-        }
-
         public AccountController(ApplicationUserManager userManager)
         {
             UserManager = userManager;
         }
+        public AccountController() { }
 
         public ApplicationUserManager UserManager
         {
@@ -51,10 +49,10 @@ namespace QuizVersusApi.Controllers
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
-            if (!result.Succeeded)
-            {
+            if (result.Succeeded)
+                 await UserManager.AddToRoleAsync(user.Id, RoleConsts.User);
+            else
                 return GetErrorResult(result);
-            }
 
             return Ok();
         }
