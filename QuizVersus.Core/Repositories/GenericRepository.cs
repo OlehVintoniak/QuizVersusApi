@@ -51,7 +51,7 @@ namespace QuizVersus.Core.Repositories
         public virtual TEntity Add(TEntity entity)
         {
             var addedEntity = DbSet.Add(entity);
-            UnitOfWork.CommitAsync();
+            UnitOfWork.Commit();
             return addedEntity;
         }
 
