@@ -7,8 +7,8 @@ namespace QuizVersus.Core.Services
 {
     public class ApplicationUserService : GenericRepository<ApplicationUser>, IApplicationUserService
     {
-        public ApplicationUserService(ApplicationDbContext context)
-            : base(context) { }
+        public ApplicationUserService(ApplicationDbContext context, IUnitOfWork unitOfWork)
+            : base(context, unitOfWork) { }
         
     }
 }

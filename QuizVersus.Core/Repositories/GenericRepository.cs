@@ -16,9 +16,10 @@ namespace QuizVersus.Core.Repositories
             get { return _dbSet; }
         }
         protected readonly ApplicationDbContext Context;
-
-        protected GenericRepository(ApplicationDbContext сontext)
+        protected IUnitOfWork UnitOfWork { get; }
+        protected GenericRepository(ApplicationDbContext сontext, IUnitOfWork unitOfWork)
         {
+            UnitOfWork = unitOfWork;
             Context = сontext;
             if (Context != null)
             {
@@ -49,12 +50,15 @@ namespace QuizVersus.Core.Repositories
 
         public virtual TEntity Add(TEntity entity)
         {
-            return DbSet.Add(entity);
+            var addedEntity = DbSet.Add(entity);
+            UnitOfWork.CommitAsync();
+            return addedEntity;
         }
 
         public virtual void Update(TEntity entity)
         {
             Context.Entry(entity).State = EntityState.Modified;
+            UnitOfWork.Commit();
         }
 
         public virtual TEntity Delete(TEntity entity)
@@ -63,7 +67,9 @@ namespace QuizVersus.Core.Repositories
             {
                 DbSet.Attach(entity);
             }
-            return DbSet.Remove(entity);
+            var result = DbSet.Remove(entity);
+            UnitOfWork.Commit();
+            return result;
         }
 
         public virtual TEntity DeleteById(object id)

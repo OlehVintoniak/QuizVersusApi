@@ -7,8 +7,8 @@ namespace QuizVersus.Core.Services
 {
     public class CategoryService : GenericRepository<Category>, ICategoryService
     {
-        public CategoryService(ApplicationDbContext context)
-            : base(context) { }
+        public CategoryService(ApplicationDbContext context, IUnitOfWork unitOfWork)
+            : base(context, unitOfWork) { }
 
     }
 }
