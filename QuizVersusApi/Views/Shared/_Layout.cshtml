@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using QuizVersus.Core.Data.Consts
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -21,8 +22,12 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="~/swagger">Api</a></li>
-                    <li>@Html.ActionLink("Admin", "Index", "Admin", new { area = "Admin" }, null)</li>
+                    @if (Request.IsAuthenticated && User.IsInRole(Role.Admin))
+                    {
+                        <li>@Html.ActionLink("Admin", "Index", "Admin", new { area = "Admin" }, null)</li>
+                    }
                 </ul>
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>

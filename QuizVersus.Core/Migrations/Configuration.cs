@@ -32,8 +32,8 @@ namespace QuizVersus.Core.Migrations
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             string password = "1z1z1z";
 
-            var adminRole = new IdentityRole { Name = RoleConsts.Admin };
-            var userRole = new IdentityRole { Name = RoleConsts.User };
+            var adminRole = new IdentityRole { Name = Role.Admin };
+            var userRole = new IdentityRole { Name = Role.User };
 
             if (!roleManager.Roles.Any())
             {

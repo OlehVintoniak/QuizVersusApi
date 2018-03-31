@@ -60,7 +60,7 @@
     <Compile Include="Data\Configurations\ApplicationUserConfiguration.cs" />
     <Compile Include="Data\Configurations\CategotyConfiguration.cs" />
     <Compile Include="Data\Consts\Consts.cs" />
-    <Compile Include="Data\Consts\RoleConsts.cs" />
+    <Compile Include="Data\Consts\Role.cs" />
     <Compile Include="Data\Entities\Abstract\Entity.cs" />
     <Compile Include="Data\Entities\Abstract\IEntity.cs" />
     <Compile Include="Data\Entities\ApplicationUser.cs" />

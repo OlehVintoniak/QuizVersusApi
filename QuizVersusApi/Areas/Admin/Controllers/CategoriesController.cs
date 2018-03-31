@@ -4,9 +4,11 @@ using QuizVersus.Core.Services.Interfaces;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using QuizVersus.Core.Data.Consts;
 
 namespace QuizVersusApi.Areas.Admin.Controllers
 {
+    [Authorize(Roles = Role.Admin)]
     public class CategoriesController : Controller
     {
         private readonly ICategoryService _categoryService;
