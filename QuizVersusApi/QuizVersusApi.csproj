@@ -225,6 +225,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuestionsController.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
@@ -307,6 +308,11 @@
     <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminSideMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Questions\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Questions\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Questions\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Questions\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Questions\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

@@ -59,12 +59,16 @@
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\Configurations\ApplicationUserConfiguration.cs" />
     <Compile Include="Data\Configurations\CategotyConfiguration.cs" />
+    <Compile Include="Data\Configurations\QuestionConfiguration.cs" />
     <Compile Include="Data\Consts\Consts.cs" />
     <Compile Include="Data\Consts\Role.cs" />
     <Compile Include="Data\Entities\Abstract\Entity.cs" />
     <Compile Include="Data\Entities\Abstract\IEntity.cs" />
     <Compile Include="Data\Entities\ApplicationUser.cs" />
     <Compile Include="Data\Entities\Category.cs" />
+    <Compile Include="Data\Entities\Question.cs" />
+    <Compile Include="Data\Enums\CorrectAnswer.cs" />
+    <Compile Include="Data\Enums\Difficult.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />

@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using QuizVersus.Core.Data;
 using QuizVersus.Core.Data.Consts;
 using QuizVersus.Core.Data.Entities;
+using QuizVersus.Core.Data.Enums;
 
 namespace QuizVersus.Core.Migrations
 {
@@ -22,12 +23,15 @@ namespace QuizVersus.Core.Migrations
         {
             SeedUsers(context);
             SeedCategories(context);
+            SeedQuestions(context);
 
             base.Seed(context);
         }
 
         private void SeedUsers(ApplicationDbContext context)
         {
+            if (context.Users.Any()) return;
+
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             string password = "1z1z1z";
@@ -78,6 +82,8 @@ namespace QuizVersus.Core.Migrations
 
         private void SeedCategories(ApplicationDbContext context)
         {
+            if (context.Categories.Any()) return;
+
             var categories = new List<string>
             {
                 "History","Science","Geography"
@@ -90,6 +96,38 @@ namespace QuizVersus.Core.Migrations
                 };
                 context.Categories.Add(c);
             }
+        }
+
+        private void SeedQuestions(ApplicationDbContext context)
+        {
+            if (context.Questions.Any()) return;
+
+            var questions = new List<Question>
+            {
+                new Question
+                {
+                    Text = "Capital of Great Britian?",
+                    Answer1 = "Kyiv",
+                    Answer2 = "London",
+                    Answer3 = "Toronto",
+                    Answer4 = "Moscow",
+                    CategoryId = 2,
+                    CorrectAnswer = CorrectAnswer.Second,
+                    Difficult = Difficult.Easy
+                },
+                new Question
+                {
+                    Text = "When GWW II was started?",
+                    Answer1 = "1999",
+                    Answer2 = "1945",
+                    Answer3 = "1633",
+                    Answer4 = "1939",
+                    CategoryId = 1,
+                    CorrectAnswer = CorrectAnswer.Fourth,
+                    Difficult = Difficult.Medium
+                }
+            };
+            context.Questions.AddRange(questions);
         }
     }
 }

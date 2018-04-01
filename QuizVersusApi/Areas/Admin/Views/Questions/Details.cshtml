@@ -1,0 +1,86 @@
+﻿@model QuizVersus.Core.Data.Entities.Question
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="row">
+    @Html.Partial("_AdminSideMenu")
+    <div class="col-sm-10">
+        <div class="container">
+            <h4>Question</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Category.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Text)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Text)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Difficult)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Difficult)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Answer1)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Answer1)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Answer2)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Answer2)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Answer3)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Answer3)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Answer4)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Answer4)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CorrectAnswer)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CorrectAnswer)
+                </dd>
+
+            </dl>
+
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </div>
+</div>
