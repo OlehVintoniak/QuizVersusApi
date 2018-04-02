@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using QuizVersusApi.Models.Account;
+using QuizVersusApi.Models;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -24,25 +24,25 @@ namespace QuizVersusApi.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> Login(LoginBindingModel model)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(model);
-        //    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(LoginBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
-        //    var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-        //    switch (result)
-        //    {
-        //        case SignInStatus.Success:
-        //            return RedirectToAction("Index");
-        //        default:
-        //            ModelState.AddModelError("", "Invalid login attempt.");
-        //            return View(model);
-        //    }
-        //}
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return RedirectToAction("Index");
+                default:
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return View(model);
+            }
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]

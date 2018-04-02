@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
-namespace QuizVersusApi.Models.Account
+namespace QuizVersusApi.Models
 {
     public class RegisterBindingModel
     {

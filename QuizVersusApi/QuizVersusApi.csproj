@@ -264,7 +264,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Account\AccountBindingModels.cs" />
+    <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\Quiz\QuestionViewModel.cs" />
     <Compile Include="Models\Quiz\QuizViewModel.cs" />
     <Compile Include="Modules\EfModule.cs" />
@@ -350,6 +350,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Models\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
