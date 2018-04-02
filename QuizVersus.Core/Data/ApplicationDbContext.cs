@@ -9,6 +9,7 @@ namespace QuizVersus.Core.Data
     {
         public DbSet<Category> Categories { get; set; }
         public DbSet<Question> Questions { get; set; }
+        public DbSet<Quiz> Quizes { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -25,6 +26,7 @@ namespace QuizVersus.Core.Data
             modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
             modelBuilder.Configurations.Add(new CategotyConfiguration());
             modelBuilder.Configurations.Add(new QuestionConfiguration());
+            modelBuilder.Configurations.Add(new QuizConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

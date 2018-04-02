@@ -26,7 +26,6 @@ namespace QuizVersusApi.Controllers
             private set { _userManager = value; }
         }
 
-        // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
@@ -53,15 +52,6 @@ namespace QuizVersusApi.Controllers
 
             return Ok();
         }
-
-        //// POST api/Account/Logout
-        //[Route("Logout")]
-        //public IHttpActionResult Logout()
-        //{
-        //    Authentication.SignOut(CookieAuthenticationDefaults.AuthenticationType);
-        //    return Ok();
-        //}
-
 
         #region Disposable
         protected override void Dispose(bool disposing)

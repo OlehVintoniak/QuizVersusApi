@@ -51,7 +51,7 @@ namespace QuizVersus.Core.Services.Abstract
             return Repository.FindById(id);
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
             ValidateEntity(entity);
             Repository.Update(entity);

@@ -15,6 +15,7 @@ namespace QuizVersus.Core.Services.Factory
         private IApplicationUserService _applicationUserService;
         private ICategoryService _categoryService;
         private IQuestionService _questionService;
+        private IQuizService _quizService;
 
         #endregion
 
@@ -45,6 +46,9 @@ namespace QuizVersus.Core.Services.Factory
 
         public IQuestionService QuestionService
             => _questionService ?? (_questionService = new QuestionService(_unitOfWork, _repositoryManager));
+
+        public IQuizService QuizService
+            => _quizService ?? (_quizService = new QuizService(_unitOfWork, _repositoryManager));
 
         #endregion
     }

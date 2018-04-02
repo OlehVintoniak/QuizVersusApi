@@ -7,5 +7,6 @@ namespace QuizVersus.Core.Repositories.Factory
         IApplicationUserRepository ApplicationUsers { get; }
         ICategoryRepository Categories { get; }
         IQuestionRepository Questions { get; }
+        IQuizRepository Quizes { get; }
     }
 }

@@ -7,5 +7,6 @@ namespace QuizVersus.Core.Services.Factory
         IApplicationUserService ApplicationUserService { get; }
         ICategoryService CategoryService { get; }
         IQuestionService QuestionService { get; }
+        IQuizService QuizService { get; }
     }
 }

@@ -14,6 +14,8 @@ namespace QuizVersus.Core.Data.Configurations
                 .HasForeignKey(q => q.CategoryId)
                 .WillCascadeOnDelete(false);
 
+            HasMany(q => q.Quizes)
+                .WithMany(q => q.Questions);
         }
     }
 }

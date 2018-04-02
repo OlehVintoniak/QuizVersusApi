@@ -12,6 +12,7 @@ namespace QuizVersus.Core.Repositories.Factory
         private IApplicationUserRepository _applicationUserRepository;
         private ICategoryRepository _categoryRepository;
         private IQuestionRepository _questionRepository;
+        private IQuizRepository _quizRepository;
 
         #endregion
 
@@ -30,6 +31,9 @@ namespace QuizVersus.Core.Repositories.Factory
 
         public IQuestionRepository Questions
             => _questionRepository ?? (_questionRepository = new QuestionRepository(_context));
+
+        public IQuizRepository Quizes
+            => _quizRepository ?? (_quizRepository = new QuizRepository(_context));
 
         #endregion
     }

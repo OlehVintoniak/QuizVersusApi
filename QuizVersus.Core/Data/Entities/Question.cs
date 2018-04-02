@@ -1,5 +1,6 @@
 ﻿using QuizVersus.Core.Data.Entities.Abstract;
 using QuizVersus.Core.Data.Enums;
+using System.Collections.Generic;
 
 namespace QuizVersus.Core.Data.Entities
 {
@@ -16,5 +17,6 @@ namespace QuizVersus.Core.Data.Entities
         public CorrectAnswer CorrectAnswer { get; set; }
 
         public virtual Category Category { get; set; }
+        public virtual ICollection<Quiz> Quizes { get; set; } = new List<Quiz>();
     }
 }

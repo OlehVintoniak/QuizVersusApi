@@ -1,10 +1,10 @@
 ﻿using QuizVersus.Core.Data.Entities;
+using QuizVersus.Core.Exceptions;
 using QuizVersus.Core.Repositories.Abstract;
 using QuizVersus.Core.Repositories.Factory;
 using QuizVersus.Core.Repositories.Interfaces;
 using QuizVersus.Core.Services.Abstract;
 using QuizVersus.Core.Services.Interfaces;
-using System;
 
 namespace QuizVersus.Core.Services
 {
@@ -20,12 +20,23 @@ namespace QuizVersus.Core.Services
 
         public override Question Add(Question question)
         {
-            var category = _categoryRepository.FindById(question.CategoryId);
-            if(category == null)
-            {
-                throw new Exception("Category does not exist");
-            }
+            ValidateQuestion(question);
             return base.Add(question);
+        }
+
+        public override void Update(Question question)
+        {
+            ValidateQuestion(question);
+            base.Update(question);
+        }
+
+        private void ValidateQuestion(Question question)
+        {
+            var category = _categoryRepository.FindById(question.CategoryId);
+            if (category == null)
+            {
+                throw new CoreException("Category does not exist");
+            }
         }
     }
 }
