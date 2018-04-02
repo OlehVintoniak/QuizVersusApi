@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
-namespace QuizVersusApi.Models
+namespace QuizVersusApi.Models.Account
 {
-    // Models used as parameters to AccountController actions.
-
     public class RegisterBindingModel
     {
         [Required]

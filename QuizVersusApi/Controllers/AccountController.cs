@@ -2,7 +2,7 @@
 using Microsoft.AspNet.Identity.Owin;
 using QuizVersus.Core.Data.Consts;
 using QuizVersus.Core.Data.Entities;
-using QuizVersusApi.Models;
+using QuizVersusApi.Models.Account;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;

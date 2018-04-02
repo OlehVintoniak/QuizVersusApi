@@ -5,5 +5,6 @@ namespace QuizVersus.Core.Repositories.Interfaces
 {
     public interface IApplicationUserRepository : IGenericRepository<ApplicationUser>
     {
+        string GetRandomReceiversId(string senderId);
     }
 }

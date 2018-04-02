@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using QuizVersusApi.Models;
+using QuizVersusApi.Models.Account;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;

@@ -5,5 +5,6 @@ namespace QuizVersus.Core.Services.Interfaces
 {
     public interface IQuizService : IEntityService<Quiz>
     {
+        Quiz CreateQuickQuiz(string senderId);
     }
 }
