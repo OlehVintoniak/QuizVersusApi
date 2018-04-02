@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using QuizVersus.Core.Data;
 
-namespace QuizVersus.Core.Repositories
+namespace QuizVersus.Core.Repositories.Abstract
 {
     /// <summary>
     ///     The Entity Framework implementation of IUnitOfWork

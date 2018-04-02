@@ -4,8 +4,8 @@ namespace QuizVersus.Core.Services.Factory
 {
     public interface IServiceManager
     {
-        IApplicationUserService ApplicationUsers { get; }
-        ICategoryService Categories { get; }
-        IQuestionService Questions { get; }
+        IApplicationUserService ApplicationUserService { get; }
+        ICategoryService CategoryService { get; }
+        IQuestionService QuestionService { get; }
     }
 }

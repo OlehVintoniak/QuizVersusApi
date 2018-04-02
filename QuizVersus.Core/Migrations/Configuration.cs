@@ -111,7 +111,7 @@ namespace QuizVersus.Core.Migrations
                     Answer2 = "London",
                     Answer3 = "Toronto",
                     Answer4 = "Moscow",
-                    CategoryId = 2,
+                    CategoryId = 3,
                     CorrectAnswer = CorrectAnswer.Second,
                     Difficult = Difficult.Easy
                 },
@@ -122,7 +122,7 @@ namespace QuizVersus.Core.Migrations
                     Answer2 = "1945",
                     Answer3 = "1633",
                     Answer4 = "1939",
-                    CategoryId = 1,
+                    CategoryId = 2,
                     CorrectAnswer = CorrectAnswer.Fourth,
                     Difficult = Difficult.Medium
                 }

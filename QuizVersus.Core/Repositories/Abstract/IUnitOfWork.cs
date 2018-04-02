@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace QuizVersus.Core.Repositories
+namespace QuizVersus.Core.Repositories.Abstract
 {
     public interface IUnitOfWork
     {

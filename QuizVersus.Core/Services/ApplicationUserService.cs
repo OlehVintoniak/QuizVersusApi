@@ -1,14 +1,15 @@
-﻿using QuizVersus.Core.Data;
-using QuizVersus.Core.Data.Entities;
-using QuizVersus.Core.Repositories;
+﻿using QuizVersus.Core.Data.Entities;
+using QuizVersus.Core.Repositories.Abstract;
+using QuizVersus.Core.Repositories.Interfaces;
+using QuizVersus.Core.Services.Abstract;
 using QuizVersus.Core.Services.Interfaces;
 
 namespace QuizVersus.Core.Services
 {
-    public class ApplicationUserService : GenericRepository<ApplicationUser>, IApplicationUserService
+    public class ApplicationUserService : EntityService<IApplicationUserRepository, ApplicationUser>, IApplicationUserService
     {
-        public ApplicationUserService(ApplicationDbContext context, IUnitOfWork unitOfWork)
-            : base(context, unitOfWork) { }
+        public ApplicationUserService(IUnitOfWork unitOfWork, IApplicationUserRepository repository)
+            : base(unitOfWork, repository) { }
         
     }
 }

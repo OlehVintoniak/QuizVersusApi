@@ -14,7 +14,7 @@ namespace QuizVersusApi.Areas.Admin.Controllers
         private readonly ICategoryService _categoryService;
         public CategoriesController(IServiceManager serviceManager)
         {
-            _categoryService = serviceManager.Categories;
+            _categoryService = serviceManager.CategoryService;
         }
 
         // GET: Admin/Categories
@@ -31,7 +31,7 @@ namespace QuizVersusApi.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var category = _categoryService.Find(id);
+            var category = _categoryService.FindById(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -66,7 +66,7 @@ namespace QuizVersusApi.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var category = _categoryService.Find(id);
+            var category = _categoryService.FindById(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -94,7 +94,7 @@ namespace QuizVersusApi.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var category = _categoryService.Find(id);
+            var category = _categoryService.FindById(id);
             if (category == null)
             {
                 return HttpNotFound();

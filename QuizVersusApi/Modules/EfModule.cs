@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using QuizVersus.Core.Data;
-using QuizVersus.Core.Repositories;
+using QuizVersus.Core.Repositories.Abstract;
 
 namespace QuizVersusApi.Modules
 {

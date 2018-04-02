@@ -1,9 +1,9 @@
 ﻿using QuizVersus.Core.Data.Entities;
-using QuizVersus.Core.Repositories;
+using QuizVersus.Core.Services.Abstract;
 
 namespace QuizVersus.Core.Services.Interfaces
 {
-    public interface IQuestionService : IGenericRepository<Question>
+    public interface IQuestionService : IEntityService<Question>
     {
     }
 }

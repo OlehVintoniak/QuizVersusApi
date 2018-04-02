@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using QuizVersus.Core.Data;
 using QuizVersus.Core.Data.Entities.Abstract;
 
-namespace QuizVersus.Core.Repositories
+namespace QuizVersus.Core.Repositories.Abstract
 {
     public abstract class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class, IEntity
     {
@@ -16,10 +16,8 @@ namespace QuizVersus.Core.Repositories
             get { return _dbSet; }
         }
         protected readonly ApplicationDbContext Context;
-        protected IUnitOfWork UnitOfWork { get; }
-        protected GenericRepository(ApplicationDbContext сontext, IUnitOfWork unitOfWork)
+        protected GenericRepository(ApplicationDbContext сontext)
         {
-            UnitOfWork = unitOfWork;
             Context = сontext;
             if (Context != null)
             {
@@ -43,22 +41,19 @@ namespace QuizVersus.Core.Repositories
             return DbSet.Where(predicate).AsEnumerable();
         }
 
-        public virtual TEntity Find(object id)
+        public virtual TEntity FindById(object id)
         {
             return DbSet.Find(id);
         }
 
         public virtual TEntity Add(TEntity entity)
         {
-            var addedEntity = DbSet.Add(entity);
-            UnitOfWork.Commit();
-            return addedEntity;
+            return DbSet.Add(entity);
         }
 
         public virtual void Update(TEntity entity)
         {
             Context.Entry(entity).State = EntityState.Modified;
-            UnitOfWork.Commit();
         }
 
         public virtual TEntity Delete(TEntity entity)
@@ -67,9 +62,7 @@ namespace QuizVersus.Core.Repositories
             {
                 DbSet.Attach(entity);
             }
-            var result = DbSet.Remove(entity);
-            UnitOfWork.Commit();
-            return result;
+            return DbSet.Remove(entity);
         }
 
         public virtual TEntity DeleteById(object id)

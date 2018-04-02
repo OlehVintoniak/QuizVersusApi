@@ -13,8 +13,8 @@ namespace QuizVersusApi.Areas.Admin.Controllers
 
         public QuestionsController(IServiceManager serviceManager)
         {
-            _questionService = serviceManager.Questions;
-            _categoryService = serviceManager.Categories;
+            _questionService = serviceManager.QuestionService;
+            _categoryService = serviceManager.CategoryService;
         }
 
         public ActionResult Index()
@@ -29,7 +29,7 @@ namespace QuizVersusApi.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Question question = _questionService.Find(id);
+            Question question = _questionService.FindById(id);
             if (question == null)
             {
                 return HttpNotFound();
@@ -49,7 +49,7 @@ namespace QuizVersusApi.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Todo:  check if category id exist. Need to implement separately repositories...
+                // Todo:  check if category id exist.
                 _questionService.Add(question);
                 return RedirectToAction("Index");
             }
@@ -64,7 +64,7 @@ namespace QuizVersusApi.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Question question = _questionService.Find(id);
+            Question question = _questionService.FindById(id);
             if (question == null)
             {
                 return HttpNotFound();
@@ -92,7 +92,7 @@ namespace QuizVersusApi.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Question question = _questionService.Find(id);
+            Question question = _questionService.FindById(id);
             if (question == null)
             {
                 return HttpNotFound();
