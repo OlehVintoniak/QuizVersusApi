@@ -49,7 +49,6 @@ namespace QuizVersusApi.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Todo:  check if category id exist.
                 _questionService.Add(question);
                 return RedirectToAction("Index");
             }

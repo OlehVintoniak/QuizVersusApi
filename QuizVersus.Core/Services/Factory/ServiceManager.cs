@@ -44,7 +44,7 @@ namespace QuizVersus.Core.Services.Factory
             => _categoryService ?? (_categoryService = new CategoryService(_unitOfWork, _repositoryManager.Categories));
 
         public IQuestionService QuestionService
-            => _questionService ?? (_questionService = new QuestionService(_unitOfWork, _repositoryManager.Questions));
+            => _questionService ?? (_questionService = new QuestionService(_unitOfWork, _repositoryManager));
 
         #endregion
     }

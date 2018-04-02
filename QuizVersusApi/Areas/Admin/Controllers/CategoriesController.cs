@@ -17,14 +17,12 @@ namespace QuizVersusApi.Areas.Admin.Controllers
             _categoryService = serviceManager.CategoryService;
         }
 
-        // GET: Admin/Categories
         public ActionResult Index()
         {
             var categories = _categoryService.GetAll().ToList();
             return View(categories);
         }
 
-        // GET: Admin/Categories/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,13 +37,11 @@ namespace QuizVersusApi.Areas.Admin.Controllers
             return View(category);
         }
 
-        // GET: Admin/Categories/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Categories/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Category category)
@@ -59,7 +55,6 @@ namespace QuizVersusApi.Areas.Admin.Controllers
             return View(category);
         }
 
-        // GET: Admin/Categories/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,7 +69,6 @@ namespace QuizVersusApi.Areas.Admin.Controllers
             return View(category);
         }
 
-        // POST: Admin/Categories/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Category category)
@@ -87,7 +81,6 @@ namespace QuizVersusApi.Areas.Admin.Controllers
             return View(category);
         }
 
-        // GET: Admin/Categories/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -102,7 +95,6 @@ namespace QuizVersusApi.Areas.Admin.Controllers
             return View(category);
         }
 
-        // POST: Admin/Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

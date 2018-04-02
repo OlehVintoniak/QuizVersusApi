@@ -22,13 +22,13 @@ namespace QuizVersus.Core.Services.Abstract
             get { return _unitOfWork; }
         }
 
-        protected EntityService(IUnitOfWork unitOfWork, TRepo repository)
+        protected  EntityService(IUnitOfWork unitOfWork, TRepo repository)
         {
             _unitOfWork = unitOfWork;
             _repository = repository;
         }
 
-        public TEntity Add(TEntity entity)
+        public virtual TEntity Add(TEntity entity)
         {
             ValidateEntity(entity);
             TEntity addedEntity = Repository.Add(entity);
