@@ -81,6 +81,8 @@
     <Compile Include="Services\Factory\ServiceManager.cs" />
     <Compile Include="Services\Interfaces\IApplicationUserService.cs" />
     <Compile Include="Services\Interfaces\ICategoryService.cs" />
+    <Compile Include="Services\Interfaces\IQuestionService.cs" />
+    <Compile Include="Services\QuestionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

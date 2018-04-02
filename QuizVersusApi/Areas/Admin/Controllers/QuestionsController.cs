@@ -1,7 +1,6 @@
-﻿using QuizVersus.Core.Data;
-using QuizVersus.Core.Data.Entities;
-using System.Data.Entity;
-using System.Linq;
+﻿using QuizVersus.Core.Data.Entities;
+using QuizVersus.Core.Services.Factory;
+using QuizVersus.Core.Services.Interfaces;
 using System.Net;
 using System.Web.Mvc;
 
@@ -9,23 +8,28 @@ namespace QuizVersusApi.Areas.Admin.Controllers
 {
     public class QuestionsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly IQuestionService _questionService;
+        private readonly ICategoryService _categoryService;
 
-        // GET: Admin/Questions
-        public ActionResult Index()
+        public QuestionsController(IServiceManager serviceManager)
         {
-            var questions = db.Questions.Include(q => q.Category);
-            return View(questions.ToList());
+            _questionService = serviceManager.Questions;
+            _categoryService = serviceManager.Categories;
         }
 
-        // GET: Admin/Questions/Details/5
+        public ActionResult Index()
+        {
+            var questions = _questionService.GetAll();
+            return View(questions);
+        }
+
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Question question = db.Questions.Find(id);
+            Question question = _questionService.Find(id);
             if (question == null)
             {
                 return HttpNotFound();
@@ -33,72 +37,62 @@ namespace QuizVersusApi.Areas.Admin.Controllers
             return View(question);
         }
 
-        // GET: Admin/Questions/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
+            ViewBag.CategoryId = new SelectList(_categoryService.GetAll(), "Id", "Name");
             return View();
         }
 
-        // POST: Admin/Questions/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Text,Difficult,CategoryId,Answer1,Answer2,Answer3,Answer4,CorrectAnswer")] Question question)
+        public ActionResult Create(Question question)
         {
             if (ModelState.IsValid)
             {
-                db.Questions.Add(question);
-                db.SaveChanges();
+                // Todo:  check if category id exist. Need to implement separately repositories...
+                _questionService.Add(question);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", question.CategoryId);
+            ViewBag.CategoryId = new SelectList(_categoryService.GetAll(), "Id", "Name", question.CategoryId);
             return View(question);
         }
 
-        // GET: Admin/Questions/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Question question = db.Questions.Find(id);
+            Question question = _questionService.Find(id);
             if (question == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", question.CategoryId);
+            ViewBag.CategoryId = new SelectList(_categoryService.GetAll(), "Id", "Name", question.CategoryId);
             return View(question);
         }
 
-        // POST: Admin/Questions/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Text,Difficult,CategoryId,Answer1,Answer2,Answer3,Answer4,CorrectAnswer")] Question question)
+        public ActionResult Edit(Question question)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(question).State = EntityState.Modified;
-                db.SaveChanges();
+                _questionService.Update(question);
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", question.CategoryId);
+            ViewBag.CategoryId = new SelectList(_categoryService.GetAll(), "Id", "Name", question.CategoryId);
             return View(question);
         }
 
-        // GET: Admin/Questions/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Question question = db.Questions.Find(id);
+            Question question = _questionService.Find(id);
             if (question == null)
             {
                 return HttpNotFound();
@@ -106,24 +100,12 @@ namespace QuizVersusApi.Areas.Admin.Controllers
             return View(question);
         }
 
-        // POST: Admin/Questions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Question question = db.Questions.Find(id);
-            db.Questions.Remove(question);
-            db.SaveChanges();
+            _questionService.DeleteById(id);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }
