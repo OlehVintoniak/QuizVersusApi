@@ -1,4 +1,6 @@
-﻿using QuizVersus.Core.Data.Consts;
+﻿using System.Collections.Generic;
+using System.Linq;
+using QuizVersus.Core.Data.Consts;
 using QuizVersus.Core.Data.Entities;
 using QuizVersus.Core.Exceptions;
 using QuizVersus.Core.Repositories.Abstract;
@@ -20,6 +22,16 @@ namespace QuizVersus.Core.Services
             _questionRepository = manager.Questions;
         }
 
+        public List<Quiz> GetSended(string userId)
+        {
+            return _userRepository.FindById(userId).SendedQuizes.ToList();
+        }
+
+        public List<Quiz> GetRecived(string userId)
+        {
+            return _userRepository.FindById(userId).ReceivedQuizes.ToList();
+        }
+
         public Quiz CreateQuickQuiz(string senderId)
         {
             var quiz = new Quiz
@@ -29,6 +41,11 @@ namespace QuizVersus.Core.Services
                 Questions = _questionRepository.GetRandomQuestions(Consts.QuizSize)
             };
             return base.Add(quiz);
+        }
+
+        public int CommitQuiz(Quiz quiz)
+        {
+            throw new System.NotImplementedException();
         }
 
         public override Quiz Add(Quiz quiz)

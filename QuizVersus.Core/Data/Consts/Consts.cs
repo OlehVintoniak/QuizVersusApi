@@ -4,6 +4,6 @@
     {
         public const string AdminAreaLayout = "~/Views/Shared/_Layout.cshtml";
 
-        public const int QuizSize = 2;
+        public const int QuizSize = 3;
     }
 }
