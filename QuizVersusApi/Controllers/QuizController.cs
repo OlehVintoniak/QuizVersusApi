@@ -56,7 +56,7 @@ namespace QuizVersusApi.Controllers
             return Ok(new QuizViewModel(quiz));
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("SenderCommit")]
         public IHttpActionResult SenderCommitQuiz(CommitedQuiz commitedQuiz)
         {
@@ -90,7 +90,7 @@ namespace QuizVersusApi.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("ReciverCommit")]
         public IHttpActionResult ReciverCommitQuiz(CommitedQuiz commitedQuiz)
         {

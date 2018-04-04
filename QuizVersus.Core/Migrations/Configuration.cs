@@ -24,6 +24,7 @@ namespace QuizVersus.Core.Migrations
             SeedUsers(context);
             SeedCategories(context);
             SeedQuestions(context);
+            SeedQuizes(context);
 
             base.Seed(context);
         }
@@ -53,7 +54,6 @@ namespace QuizVersus.Core.Migrations
                 userManager.AddToRole(admin.Id, adminRole.Name);
                 userManager.AddToRole(admin.Id, userRole.Name);
             }
-
             // Default Users
             var users = new List<KeyValuePair<string, string>>
             {
@@ -128,6 +128,24 @@ namespace QuizVersus.Core.Migrations
                 }
             };
             context.Questions.AddRange(questions);
+        }
+
+        private void SeedQuizes(ApplicationDbContext context)
+        {
+            if (context.Quizes.Any()) return;
+
+            var senderId = context.Users.FirstOrDefault().Id;
+            var reciverId = context.Users.Where(u => u.Id != senderId).FirstOrDefault().Id;
+            var quizes = new List<Quiz>
+            {
+                new Quiz
+                {
+                    SenderId = senderId,
+                    ReceiverId = reciverId,
+                    Questions = context.Questions.Take(Consts.QuizSize).ToList()
+                }
+            };
+            context.Quizes.AddRange(quizes);
         }
     }
 }

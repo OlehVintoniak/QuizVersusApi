@@ -96,6 +96,7 @@ namespace QuizVersusApi.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CanBeDeleted = question.Quizes.Count == 0;
             return View(question);
         }
 
