@@ -28,7 +28,15 @@
                     @Html.AntiForgeryToken()
 
                     <div class="form-actions no-color">
-                        <input type="submit" value="Delete" class="btn btn-default" /> |
+                        @if (ViewBag.CanBeDeleted)
+                        {
+                            <input type="submit" value="Delete" class="btn btn-default" />
+                        }
+                        else
+                        {
+                            <sppan style="color:red">Can't be deleted, couse there are questions with this category!</sppan>
+                        }
+                        |
                         @Html.ActionLink("Back to List", "Index")
                     </div>
                 }

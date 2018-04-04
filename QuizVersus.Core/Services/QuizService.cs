@@ -43,11 +43,6 @@ namespace QuizVersus.Core.Services
             return base.Add(quiz);
         }
 
-        public int CommitQuiz(Quiz quiz)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public override Quiz Add(Quiz quiz)
         {
             ValidateQuiz(quiz);

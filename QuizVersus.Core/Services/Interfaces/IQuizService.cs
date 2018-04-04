@@ -9,6 +9,5 @@ namespace QuizVersus.Core.Services.Interfaces
         Quiz CreateQuickQuiz(string userId);
         List<Quiz> GetSended(string userId);
         List<Quiz> GetRecived(string userId);
-        int CommitQuiz(Quiz quiz);
     }
 }
