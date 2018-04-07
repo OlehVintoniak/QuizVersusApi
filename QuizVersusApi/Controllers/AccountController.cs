@@ -15,11 +15,6 @@ namespace QuizVersusApi.Controllers
     {
         private ApplicationUserManager _userManager;
 
-        public AccountController(ApplicationUserManager userManager)
-        {
-            UserManager = userManager;
-        }
-
         public ApplicationUserManager UserManager
         {
             get { return _userManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
