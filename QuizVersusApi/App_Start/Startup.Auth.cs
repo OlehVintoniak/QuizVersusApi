@@ -40,7 +40,7 @@ namespace QuizVersusApi
             PublicClientId = "self";
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
-                TokenEndpointPath = new PathString("/Token"),
+                TokenEndpointPath = new PathString("/api/Token"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
                 // In production mode set AllowInsecureHttp = false
