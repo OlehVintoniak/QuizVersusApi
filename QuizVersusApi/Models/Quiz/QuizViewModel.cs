@@ -26,15 +26,15 @@ namespace QuizVersusApi.Models.Quiz
             Id = quiz.Id;
             ReciverFullName = $"{quiz.Receiver.FirstName} {quiz.Receiver.LastName}";
             QuestionCount = quiz.Questions.Count;
-            ReciverResult = quiz.ReciverResult.Value;
-            SenderResult = quiz.SenderResult.Value;
+            ReciverResult = quiz.ReciverResult;
+            SenderResult = quiz.SenderResult;
         }
 
         public int Id { get; set; }
         public string ReciverFullName { get; set; }
         public int QuestionCount { get; set; }
-        public int ReciverResult { get; set; }
-        public int SenderResult { get; set; }
+        public int? ReciverResult { get; set; }
+        public int? SenderResult { get; set; }
     }
 
     public class RecivedQuizSimpleViewModel
