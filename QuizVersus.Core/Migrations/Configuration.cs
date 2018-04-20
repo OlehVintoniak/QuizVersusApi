@@ -24,7 +24,6 @@ namespace QuizVersus.Core.Migrations
             SeedUsers(context);
             SeedCategories(context);
             SeedQuestions(context);
-            SeedQuizes(context);
 
             base.Seed(context);
         }
@@ -264,6 +263,7 @@ namespace QuizVersus.Core.Migrations
                     Answer1 = "Альпы",
                     Answer2 = "Гималаи",
                     Answer3 = "Карпаты",
+
                     Answer4 = "Апаччи",
                     CategoryId = 3,
                     CorrectAnswer = CorrectAnswer.Third,
@@ -271,24 +271,6 @@ namespace QuizVersus.Core.Migrations
                 },
             };
             context.Questions.AddRange(questions);
-        }
-
-        private void SeedQuizes(ApplicationDbContext context)
-        {
-            if (context.Quizes.Any()) return;
-
-            var senderId = context.Users.FirstOrDefault().Id;
-            var reciverId = context.Users.Where(u => u.Id != senderId).FirstOrDefault().Id;
-            var quizes = new List<Quiz>
-            {
-                new Quiz
-                {
-                    SenderId = senderId,
-                    ReceiverId = reciverId,
-                    Questions = context.Questions.Take(Consts.QuizSize).ToList()
-                }
-            };
-            context.Quizes.AddRange(quizes);
         }
     }
 }
