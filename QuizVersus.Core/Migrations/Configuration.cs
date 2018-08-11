@@ -46,7 +46,13 @@ namespace QuizVersus.Core.Migrations
             }
 
             // Default Admin
-            var admin = new ApplicationUser { Email = "admin@gmail.com", UserName = "admin@gmail.com", FirstName = "Oleg", LastName = "Vintoniak" };
+            var admin = new ApplicationUser
+            {
+                Email = "admin@gmail.com",
+                UserName = "admin@gmail.com",
+                FirstName = "System",
+                LastName = "Admin"
+            };
             var resultAdmin = userManager.Create(admin, password);
             if (resultAdmin.Succeeded)
             {
@@ -56,10 +62,10 @@ namespace QuizVersus.Core.Migrations
             // Default Users
             var users = new List<KeyValuePair<string, string>>
             {
-                new KeyValuePair<string, string>("Petro", "Petrenko"),
-                new KeyValuePair<string, string>("Vasyl", "Vasylenko"),
-                new KeyValuePair<string, string>("Ivan", "Ivanenko"),
-                new KeyValuePair<string, string>("Dima", "Dinuch")
+                //new KeyValuePair<string, string>("Petro", "Petrenko"),
+                //new KeyValuePair<string, string>("Vasyl", "Vasylenko"),
+                //new KeyValuePair<string, string>("Ivan", "Ivanenko"),
+                //new KeyValuePair<string, string>("Dima", "Dinuch")
             };
 
             foreach (var user in users)
